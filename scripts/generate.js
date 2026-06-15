@@ -1,13 +1,33 @@
 const fs=require('fs'),path=require('path'),today=new Date().toISOString().slice(0,10),slug=today;
-const feed=JSON.parse(fs.readFileSync(path.join(__dirname,'..','feed.json'),'utf8'));
-if(feed.posts.find(p=>p.slug===slug)){console.log('Exists');process.exit(0)}
-const articles=[
-{title:'焦虑的时候别跟自己说"别焦虑"——试试这5个真正有效的方法',tag:'情绪疗愈',intro:'当有人跟你说"别焦虑了"的时候，是不是更焦虑了？因为这句话的潜台词是"你的焦虑是不应该的"。真正的情绪疗愈不是否定感受，而是学会和它共处。',sections:[{title:'🧘 焦虑是来保护你的',body:'焦虑不是敌人，是你身体的警报系统。当它响起时说明有什么事需要你注意。把焦虑想象成手机电量提示——它在提醒你需要\"充电\"了，而不是手机坏了。下次焦虑来的时候，试着对自己说：\"谢谢你提醒我，我会照顾好自己的。\"而不是\"我怎么又焦虑了真没用\"。'},{title:'🌬 4-7-8呼吸法',body:'这是被心理学验证有效的快速镇静方法：用鼻子吸气4秒→憋气7秒→用嘴巴缓慢呼气8秒。重复3-5次，心率会在1分钟内显著下降。原理是：延长呼气时间激活副交感神经系统，产生镇静效果。睡前睡不着、紧张到说不出话、开会前手抖——任何时候都可以用。'},{title:'📝 把焦虑写下来',body:'焦虑在脑子里的时候是模糊而巨大的，写下来就变小了。拿一张纸，在左边写\"我在担心什么\"，右边写\"最坏会发生什么\"\"最好的情况会怎样\"\"最可能发生什么\"。写完你会发现：最坏的情况发生的概率极低，而且即使发生了你也有能力应对。写下来的过程就是脱敏的过程。'},{title:'🚶 身体先动，情绪跟着变',body:'焦虑是身体层面的紧张状态，思维劝说是治标不治本。当你焦虑到无法思考时：站起来走几步、伸展一下肩膀、用冷水拍拍脸、原地跳10下。身体状态的改变会直接改变情绪状态。老祖宗的\"出去散散心\"是有科学依据的——散步能降低皮质醇（压力激素）水平。'}]},
-{title:'总是讨好别人、不敢拒绝？你不是善良，是讨好型人格需要疗愈',tag:'自我边界',intro:'讨好型人格的本质不是\"对人好\"，是\"害怕不被喜欢\"。你以为的善良，其实是在用压抑自己的方式来换取别人的认可。这种模式不疗愈，你永远活在别人的期待里。',sections:[{title:'🔍 自测：你是讨好型人格吗',body:'1. 别人对你提要求，你很难说出\"不\"。2. 拒绝了别人之后会反复内疚很久。3. 习惯性说\"随便\"\"都行\"，觉得提自己的想法是给别人添麻烦。4. 别人心情不好你会觉得是自己有问题。5. 微信回复别人之前会反复斟酌措辞怕对方不高兴。中了3条以上——你不是\"好说话\"，是在讨好。'},{title:'💪 学会说\"不\"的练习',body:'从小事开始练习拒绝：便利店店员问要不要加购→\"不需要谢谢\"。同事约午饭你不想去→\"今天我自己带饭了，下次吧\"。不需要解释为什么，不需要道歉。\"不\"本身就是一个完整的句子。拒绝是为了保护自己的能量，不是伤害别人。那些因为你拒绝就翻脸的人，更早认清反而是好事。'},{title:'🪞 建立自我边界',body:'你的感受和别人的感受同样重要——这一条背下来。当你觉得\"拒绝他他会难过\"时，问问自己：\"那我委曲求全的时候我难不难过？\"你不必为别人的情绪负责。帮人是情分，不帮是本分。真正的善良是先照顾好自己，有多余的精力和爱再分给别人。'}]},
-{title:'在阳台养一片小森林：植物的疗愈力量被科学证实了',tag:'自然疗愈',intro:'有一项研究让两组压力大的人分别去做同样时长的室内阅读和在植物园散步——植物园组的压力激素水平下降了20%，室内组几乎没有变化。植物的疗愈效果不是玄学，是科学。',sections:[{title:'🌿 为什么植物能让人平静',body:'接触土壤中有一种叫\"母牛分枝杆菌\"的细菌，能刺激大脑释放血清素（让人感到幸福的神经递质）。看着绿色植物能降低心率和血压。照顾植物的过程本身就有冥想效果——浇水、摘枯叶、观察新芽的每一个动作都在帮你回到当下。'},{title:'🪴 新手养什么不容易死',body:'绿萝：水培土培都可以，阴暗角落也能活，一个月不浇水也不会死。虎皮兰：最耐阴最耐旱，两个月不浇水都没事，还能净化空气。吊兰：水培最简单，掐一段放水里就活。多肉：喜光但要少浇水，管住手就能养好。先从一盆开始，慢慢扩大。不要把阳台一次性摆满，养死一盆会很挫败。'},{title:'💚 把照顾植物变成日常疗愈仪式',body:'每天早起第一件事：拉开窗帘看看植物有什么变化。一周浇一次水——这个过程给自己5分钟什么都不想，就专注地给每盆植物浇水。记录新叶子什么时候长出来、植物什么时候开花了。和你的植物一起成长的感受，会让你对生活有全新的期待。'}]},
+const fp=path.join(__dirname,'..','feed.json');
+const feed=JSON.parse(fs.readFileSync(fp,'utf8'));
+if(!feed.posts)feed.posts=[];
+if(feed.posts.find(p=>p.slug===slug)){console.log('Already exists');process.exit(0)}
+
+// Content pools - 8 groups cycling through dates
+const pools=[
+[{t:'效率翻倍！这3个小技巧让你的工作流更顺畅',tag:'效率技巧',d:'减少切换、批处理、自动化——3个简单技巧立刻提升效率'}],
+[{t:'2026年必备的免费工具推荐',tag:'工具推荐',d:'精心挑选的实用免费工具，日常办公和创作都能用上'}],
+[{t:'为什么你总觉得时间不够用？',tag:'时间管理',d:'不是你不够努力，而是方法需要调整。重新规划你的时间分配'}],
+[{t:'工作学习两不误的小窍门',tag:'学习方法',d:'高效人士都在用的学习方法，每天只需投入少量时间'}],
+[{t:'比勤奋更重要的是方法',tag:'思维方式',d:'换个角度思考问题，可能会发现之前困扰你的事其实很简单'}],
+[{t:'减少决策疲劳的日常习惯',tag:'习惯养成',d:'每天做太多小决定会消耗精力，建立习惯让大脑自动运行'}],
+[{t:'让生活更有条理的整理术',tag:'生活技巧',d:'整理不只是打扫房间，更是整理思绪和提升幸福感的方式'}],
+[{t:'数字时代如何保持专注',tag:'专注力',d:'手机和社交媒体在偷走你的注意力，教你几招夺回主动权'}],
 ];
-const idx=(new Date().getDate()-1)%articles.length,a=articles[idx];
-feed.posts.unshift({slug,date:today,title:a.title,tag:a.tag,intro:a.intro,sections:a.sections});
-feed.updated=today;fs.writeFileSync(path.join(__dirname,'..','feed.json'),JSON.stringify(feed,null,2));
-const html=`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${a.title}</title><meta name="description" content="${a.intro}"><style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bg:#fafafa;--card:#fff;--text:#1a1a2e;--t2:#555;--accent:#a21caf;--border:#e5e7eb;--r:12px}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-size:16px}.container{max-width:750px;margin:0 auto;padding:0 20px}header{background:linear-gradient(135deg,#a21caf,#c026d3);color:#fff;padding:36px 0;margin-bottom:24px}header a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem}header h1{font-size:1.5rem;margin-top:8px;line-height:1.4}.post{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px}.post .intro{font-size:1rem;color:var(--t2);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);line-height:1.8}.section{margin-bottom:24px}.section h3{font-size:1.05rem;margin-bottom:6px;color:var(--accent)}.section p{color:var(--t2);font-size:.92rem;line-height:1.9}footer{text-align:center;padding:24px;color:#999;font-size:.75rem}@media(max-width:600px){.post{padding:18px}}</style></head><body><header><div class="container"><a href="../index.html">← 首页</a><h1>${a.title}</h1></div></header><main class="container"><article class="post"><p class="intro">${a.intro}</p>${a.sections.map(s=>`<div class="section"><h3>${s.title}</h3><p>${s.body}</p></div>`).join('')}</article></main><footer><p>💜 身心疗愈 · 每日更新</p></footer></body></html>`;
-fs.writeFileSync(path.join(__dirname,'..','posts',slug+'.html'),html);console.log('OK');
+
+const idx=(new Date().getDate()-1)%pools.length;
+const pool=pools[idx];
+const titles=['每日分享 | '+today,'实用技巧 | '+today,'效率提升 | '+today,'好物推荐 | '+today];
+const title=titles[new Date().getDate()%titles.length];
+
+feed.posts.unshift({slug,date:today,title:title,items:pool});
+feed.updated=today;
+fs.writeFileSync(fp,JSON.stringify(feed,null,2));
+
+// Create post HTML
+const dir=path.join(__dirname,'..','posts');
+if(!fs.existsSync(dir))fs.mkdirSync(dir,{recursive:true});
+const h=`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${title}</title><meta name="description" content="${pool.map(i=>i.t).join('、')}"><style>body{font:16px -apple-system,sans-serif;background:#fafafa;color:#1a1a2e;line-height:1.8;margin:0;padding:16px}.c{max-width:700px;margin:0 auto}article{background:#fff;padding:24px;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}h1{font-size:1.3rem;margin:0 0 4px}.date{font-size:.8rem;color:#666;margin-bottom:20px}.item{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #eee}.item h2{font-size:1rem;margin:0 0 4px}.item p{font-size:.88rem;color:#555}.tag{display:inline-block;background:#eff6ff;color:#2563eb;font-size:.68rem;padding:2px 8px;border-radius:10px;margin-left:6px}footer{text-align:center;padding:20px;color:#999;font-size:.72rem}</style></head><body><div class="c"><article><h1>${title}</h1><p class="date">📅 ${today}</p>${pool.map(i=>'<div class="item"><h2>'+i.t+' <span class="tag">'+i.tag+'</span></h2><p>'+i.d+'</p></div>').join('')}</article></div><footer>每日自动更新</footer></body></html>`;
+fs.writeFileSync(path.join(dir,slug+'.html'),h);
+console.log('Generated:',title);
